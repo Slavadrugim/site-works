@@ -1,1 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
 
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Сетка для карточек */
+#professions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Карточки подстраиваются под ширину экрана */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Сама карточка */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* При наведении карточка чуть поднимается */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.3em;
+}
+
+.salary {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.pros {
+    color: #2e7d32;
+}
+
+.cons {
+    color: #c62828;
+}
+.search-box {
+    max-width: 600px;
+    margin: 0 auto 30px auto; /* Центрируем и делаем отступ снизу */
+}
+
+#search-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #2e7d32; /* Подсвечиваем рамку зеленым при клике */
+}
