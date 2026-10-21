@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Атлас профессий</title>
-    <!-- Подключаем стили -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,15 +14,20 @@
     </header>
 
     <main>
-          <main>
-        <!-- Блок с поиском -->
+        <!-- 1. Блок с поиском -->
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Поиск профессии (например, 'кассир')...">
         </div>
 
-        <div id="professions-list"></div>
-    </main>
-        <!-- Сюда JS будет складывать карточки -->
+        <!-- 2. Блок с кнопками-фильтрами -->
+        <div class="filters">
+            <button class="filter-btn active" data-category="Все">Все</button>
+            <button class="filter-btn" data-category="Торговля">Торговля</button>
+            <button class="filter-btn" data-category="IT">IT</button>
+            <button class="filter-btn" data-category="Руководство">Руководство</button>
+        </div>
+
+        <!-- 3. Блок, куда скрипт будет складывать карточки (ТОЛЬКО ОДИН РАЗ!) -->
         <div id="professions-list"></div>
     </main>
 
