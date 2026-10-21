@@ -1,6 +1,7 @@
 const professions = [
     {
         title: "Кассир в супермаркете",
+        category: "Торговля",
         salary: "30 000 – 45 000 ₽",
         education: "1–3 месяца (курсы) или стажировка",
         description: "Работа за кассой, пробитие чеков, приём наличных и карт, работа с терминалами.",
@@ -9,6 +10,7 @@ const professions = [
     },
     {
         title: "Грузчик в супермаркете",
+        category: "Торговля",
         salary: "45 000 – 65 000 ₽",
         education: "Не нужно (иногда курсы 1-3 недели)",
         description: "Разгрузка фур, перемещение товара на склад или в зал, выкладка на полки.",
@@ -17,6 +19,7 @@ const professions = [
     },
     {
         title: "Администратор в супермаркете",
+        category: "Торговля",
         salary: "50 000 – 65 000 ₽",
         education: "Опыт в торговле или колледж",
         description: "Управление сменой, контроль кассиров, решение конфликтов, отчётность.",
@@ -25,6 +28,7 @@ const professions = [
     },
     {
         title: "Системный администратор в супермаркете",
+        category: "IT",
         salary: "45 000 – 70 000 ₽",
         education: "Колледж/вуз или курсы по сисадминистрированию",
         description: "Поддержка касс и ПК, настройка сети, ремонт оборудования, установка ПО.",
@@ -33,6 +37,7 @@ const professions = [
     },
     {
         title: "Директор магазина",
+        category: "Руководство",
         salary: "70 000 – 120 000 ₽",
         education: "Высшее/среднее проф. образование + опыт от 1 года",
         description: "Полное управление магазином: финансы, персонал, закупки, планы продаж.",
@@ -41,10 +46,8 @@ const professions = [
     }
 ];
 
-// 1. Находим контейнер
 const container = document.getElementById('professions-list');
 
-// 2. Функция создания ОДНОЙ карточки
 function renderProfession(profession) {
     const card = document.createElement('div');
     card.className = 'card';
@@ -79,36 +82,42 @@ function renderProfession(profession) {
     return card;
 }
 
-// 3. Запуск (ЭТОТ КОД ДОЛЖЕН БЫТЬ СНАРУЖИ, В САМОМ НИЗУ ФАЙЛА!)
-container.innerHTML = '';
-professions.forEach(profession => {
-    container.appendChild(renderProfession(profession));
-});
-// Находим нашу строку поиска
-const searchInput = document.getElementById('search-input');
+// --- ЛОГИКА ФИЛЬТРОВ И ПОИСКА ---
 
-// Добавляем событие: когда пользователь вводит текст (input)
-searchInput.addEventListener('input', function(event) {
-    // Берем текст, который ввели, и переводим в нижний регистр (чтобы 'Кассир' и 'кассир' находились одинаково)
-    const searchText = event.target.value.toLowerCase();
-    
-    // Очищаем контейнер с карточками
+const searchInput = document.getElementById('search-input');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+let currentCategory = 'Все';
+
+function renderCards() {
+    const searchText = searchInput.value.toLowerCase();
     container.innerHTML = '';
     
-    // Фильтруем массив профессий
     const filtered = professions.filter(profession => {
-        // Ищем текст поиска в названии профессии
-        return profession.title.toLowerCase().includes(searchText);
+        const matchesSearch = profession.title.toLowerCase().includes(searchText);
+        const matchesCategory = (currentCategory === 'Все') || (profession.category === currentCategory);
+        return matchesSearch && matchesCategory;
     });
     
-    // Если после фильтрации ничего не найдено
     if (filtered.length === 0) {
         container.innerHTML = '<p style="text-align:center; width:100%;">Ничего не найдено 😢</p>';
         return;
     }
     
-    // Выводим отфильтрованные карточки
     filtered.forEach(profession => {
         container.appendChild(renderProfession(profession));
     });
+}
+
+searchInput.addEventListener('input', renderCards);
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentCategory = button.getAttribute('data-category');
+        renderCards();
+    });
 });
+
+renderCards();
