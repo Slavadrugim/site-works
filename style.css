@@ -1,11 +1,20 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
     margin: 0;
     padding: 20px;
+    
+    /* 1. Подключаем твою картинку (проверь название файла!) */
+    /* 2. Добавляем темное затемнение (0.7), чтобы белый текст и карточки читались */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('fon.jpg');
+    
+    /* 3. Настройки картинки */
+    background-size: cover; /* Растянуть на весь экран */
+    background-attachment: fixed; /* Картинка стоит на месте при скролле */
+    background-position: center; /* Центрируем */
+    
+    /* 4. Делаем основной текст белым (чтобы было видно на темном фоне) */
+    color: white; 
 }
-
 header {
     text-align: center;
     margin-bottom: 40px;
@@ -107,3 +116,4 @@ header {
     background-color: #2e7d32; /* Заливаем зеленым */
     color: white; /* Текст белый */
 }
+
