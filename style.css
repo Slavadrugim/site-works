@@ -3,23 +3,19 @@ body {
     margin: 0;
     padding: 20px;
     
-    /* 1. Подключаем твою картинку (проверь название файла!) */
-    /* 2. Добавляем темное затемнение (0.7), чтобы белый текст и карточки читались */
+    /* Фон с картинкой и затемнением */
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('fon.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     
-    /* 3. Настройки картинки */
-    background-size: cover; /* Растянуть на весь экран */
-    background-attachment: fixed; /* Картинка стоит на месте при скролле */
-    background-position: center; /* Центрируем */
-    
-    /* 4. Делаем основной текст белым (чтобы было видно на темном фоне) */
+    /* Основной текст белый (для шапки) */
     color: white; 
 }
+
 header {
     text-align: center;
     margin-bottom: 40px;
-    
-    /* Вот эти строчки добавь внутрь существующего блока header */
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
@@ -28,10 +24,61 @@ header {
     margin-right: auto;
 }
 
+/* Блок поиска */
+.search-box {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+#search-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#search-input:focus {
+    border-color: #2e7d32;
+}
+
+/* Кнопки фильтров */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 2px solid #2e7d32;
+    background-color: white;
+    color: #2e7d32;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.filter-btn:hover {
+    background-color: #e8f5e9;
+}
+
+.filter-btn.active {
+    background-color: #2e7d32;
+    color: white;
+}
+
 /* Сетка для карточек */
 #professions-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Карточки подстраиваются под ширину экрана */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -44,10 +91,13 @@ header {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.2s;
+    
+    /* ВОТ ГЛАВНОЕ ИСПРАВЛЕНИЕ: возвращаем тексту внутри карточки темный цвет */
+    color: #333; 
 }
 
 .card:hover {
-    transform: translateY(-5px); /* При наведении карточка чуть поднимается */
+    transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
@@ -72,56 +122,3 @@ header {
 .cons {
     color: #c62828;
 }
-.search-box {
-    max-width: 600px;
-    margin: 0 auto 30px auto; /* Центрируем и делаем отступ снизу */
-}
-
-#search-input {
-    width: 100%;
-    padding: 15px;
-    font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-#search-input:focus {
-    border-color: #2e7d32; /* Подсвечиваем рамку зеленым при клике */
-}
-/* Стили для блока с кнопками */
-.filters {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-/* Стили для самих кнопок */
-.filter-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: 2px solid #2e7d32; /* Зеленая рамка */
-    background-color: white;
-    color: #2e7d32;
-    border-radius: 20px; /* Закругленные края */
-    cursor: pointer; /* Курсор в виде руки */
-    transition: all 0.3s; /* Плавная анимация */
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-}
-
-/* Эффект при наведении мышки */
-.filter-btn:hover {
-    background-color: #e8f5e9; /* Светло-зеленый фон */
-}
-
-/* Стиль для ВЫБРАННОЙ кнопки (у нее в HTML есть класс active) */
-.filter-btn.active {
-    background-color: #2e7d32; /* Заливаем зеленым */
-    color: white; /* Текст белый */
-}
-
