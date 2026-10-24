@@ -44,7 +44,6 @@ const professions = [
         pros: "Высокая зарплата, руководящая должность.",
         cons: "Огромная ответственность, стресс, ненормированный день."
     },
-        // --- РАБОЧИЕ ПРОФЕССИИ ---
     {
         title: "Электрик",
         category: "Рабочие",
@@ -90,8 +89,6 @@ const professions = [
         pros: "Хорошая оплата, навыки на всю жизнь.",
         cons: "Работа на высоте (опасно), зависимость от погоды, тяжелый физический труд."
     },
-
-    // --- ОФИСНЫЕ ПРОФЕССИИ ---
     {
         title: "Frontend-разработчик",
         category: "IT",
@@ -139,12 +136,43 @@ const professions = [
     }
 ];
 
+// Находим контейнер ОДИН РАЗ
 const container = document.getElementById('professions-list');
+
+// Загружаем избранное из памяти браузера (или создаем пустой массив)
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 function renderProfession(profession) {
     const card = document.createElement('div');
     card.className = 'card';
 
+    // Кнопка избранного (сердечко)
+    const favBtn = document.createElement('button');
+    favBtn.className = 'fav-btn';
+    
+    if (favorites.includes(profession.title)) {
+        favBtn.classList.add('active');
+        favBtn.textContent = '❤️';
+    } else {
+        favBtn.textContent = '♡';
+    }
+    
+    favBtn.addEventListener('click', () => {
+        if (favorites.includes(profession.title)) {
+            favorites = favorites.filter(title => title !== profession.title);
+            favBtn.classList.remove('active');
+            favBtn.textContent = '♡';
+        } else {
+            favorites.push(profession.title);
+            favBtn.classList.add('active');
+            favBtn.textContent = '❤️';
+        }
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    });
+
+    card.appendChild(favBtn);
+
+    // Остальное содержимое карточки
     const h2 = document.createElement('h2');
     h2.textContent = profession.title;
     card.appendChild(h2);
@@ -175,8 +203,7 @@ function renderProfession(profession) {
     return card;
 }
 
-// --- ЛОГИКА ФИЛЬТРОВ И ПОИСКА ---
-
+// ЛОГИКА ФИЛЬТРОВ И ПОИСКА
 const searchInput = document.getElementById('search-input');
 const filterButtons = document.querySelectorAll('.filter-btn');
 
