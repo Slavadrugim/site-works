@@ -146,3 +146,16 @@ header {
 .fav-btn.active {
     color: #e91e63; 
 }
+#show-favorites-btn {
+    border-color: #e91e63;
+    color: #e91e63;
+}
+
+#show-favorites-btn:hover {
+    background-color: #fce4ec;
+}
+
+#show-favorites-btn.active {
+    background-color: #e91e63;
+    color: white;
+}
