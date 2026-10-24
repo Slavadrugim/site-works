@@ -44,7 +44,6 @@ header {
 #search-input:focus {
     border-color: #3f51b5; /* Синяя рамка при клике */
 }
-}
 
 /* Кнопки фильтров */
 .filters {
@@ -75,6 +74,7 @@ header {
     background-color: #3f51b5; /* Заливаем синим */
     color: white;
 }
+
 /* Сетка для карточек */
 #professions-list {
     display: grid;
@@ -86,26 +86,18 @@ header {
 
 /* Сама карточка */
 .card {
-    background: #f8f9fa; /* Легкий сероватый оттенок вместо чисто белого */
+    background: #f8f9fa; /* Легкий сероватый оттенок */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Тень посильнее, чтобы выделялись на фоне */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Тень посильнее */
     transition: transform 0.2s, box-shadow 0.2s;
-    color: #333; 
-    border-top: 4px solid #3f51b5; /* Синяя полоска сверху карточки для стиля */
+    color: #333; /* Темный текст внутри карточки */
+    border-top: 4px solid #3f51b5; /* Синяя полоска сверху карточки */
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-}
-    /* ВОТ ГЛАВНОЕ ИСПРАВЛЕНИЕ: возвращаем тексту внутри карточки темный цвет */
-    color: #333; 
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .card h2 {
