@@ -42,7 +42,8 @@ header {
 }
 
 #search-input:focus {
-    border-color: #2e7d32;
+    border-color: #3f51b5; /* Синяя рамка при клике */
+}
 }
 
 /* Кнопки фильтров */
@@ -57,9 +58,9 @@ header {
 .filter-btn {
     padding: 10px 20px;
     font-size: 16px;
-    border: 2px solid #2e7d32;
+    border: 2px solid #3f51b5; /* Синяя рамка */
     background-color: white;
-    color: #2e7d32;
+    color: #3f51b5;
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s;
@@ -67,14 +68,13 @@ header {
 }
 
 .filter-btn:hover {
-    background-color: #e8f5e9;
+    background-color: #e8eaf6; /* Светло-синий при наведении */
 }
 
 .filter-btn.active {
-    background-color: #2e7d32;
+    background-color: #3f51b5; /* Заливаем синим */
     color: white;
 }
-
 /* Сетка для карточек */
 #professions-list {
     display: grid;
@@ -86,12 +86,19 @@ header {
 
 /* Сама карточка */
 .card {
-    background: white;
+    background: #f8f9fa; /* Легкий сероватый оттенок вместо чисто белого */
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-    
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Тень посильнее, чтобы выделялись на фоне */
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #333; 
+    border-top: 4px solid #3f51b5; /* Синяя полоска сверху карточки для стиля */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
     /* ВОТ ГЛАВНОЕ ИСПРАВЛЕНИЕ: возвращаем тексту внутри карточки темный цвет */
     color: #333; 
 }
@@ -108,8 +115,8 @@ header {
 }
 
 .salary {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background-color: #e8eaf6; /* Светло-синий фон */
+    color: #283593; /* Темно-синий текст */
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
