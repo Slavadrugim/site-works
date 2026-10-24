@@ -121,3 +121,28 @@ header {
 .cons {
     color: #c62828;
 }
+.card {
+    position: relative; 
+}
+
+.fav-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc; 
+    transition: transform 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.fav-btn:hover {
+    transform: scale(1.2);
+}
+
+.fav-btn.active {
+    color: #e91e63; 
+}
