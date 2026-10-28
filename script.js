@@ -122,6 +122,13 @@ let currentCategory = 'Все';
 
 function renderProfession(profession) {
     const card = document.createElement('div');
+        // Когда кликаем на карточку, открываем окно
+    card.addEventListener('click', (event) => {
+        // Если кликнули на сердечко, не открываем окно
+        if (event.target.closest('.fav-btn')) return; 
+        
+        openModal(profession);
+    });
     card.className = 'card';
 
     const favBtn = document.createElement('button');
@@ -243,3 +250,27 @@ favBtnFilter.addEventListener('click', () => {
 
 // Первый запуск
 renderCards();
+// --- ЛОГИКА МОДАЛЬНОГО ОКНА ---
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('close-modal');
+
+function openModal(profession) {
+    document.getElementById('modal-title').textContent = profession.title;
+    document.getElementById('modal-salary').textContent = '💰 Зарплата: ' + profession.salary;
+    document.getElementById('modal-education').innerHTML = '<strong>🎓 Обучение:</strong> ' + profession.education;
+    document.getElementById('modal-description').innerHTML = '<strong>📝 Описание:</strong> ' + profession.description;
+    document.getElementById('modal-pros').innerHTML = '✅ <strong>Плюс:</strong> ' + profession.pros;
+    document.getElementById('modal-cons').innerHTML = '❌ <strong>Минус:</strong> ' + profession.cons;
+
+    modal.style.display = 'block';
+}
+
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
