@@ -197,3 +197,69 @@ header {
 #close-modal:hover {
     color: #000;
 }
+/* --- ЯРКИЙ РЕКЛАМНЫЙ БАННЕР --- */
+.promo-banner {
+    background: linear-gradient(135deg, #ff0000, #ff4b4b); /* Красный градиент */
+    border-radius: 15px;
+    padding: 30px;
+    margin: 0 auto 40px auto; /* Центрируем и делаем отступ снизу */
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4); /* Красное свечение вокруг */
+    color: white;
+    flex-wrap: wrap; /* Чтобы на телефоне текст и кнопка переносились */
+    gap: 20px;
+}
+
+.promo-text h2 {
+    margin: 0 0 10px 0;
+    font-size: 28px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Тень для текста */
+}
+
+.promo-text p {
+    margin: 0;
+    font-size: 18px;
+    max-width: 700px;
+    line-height: 1.4;
+}
+
+.promo-btn {
+    background-color: white;
+    color: #ff0000; /* Красный текст на белой кнопке */
+    padding: 15px 30px;
+    border-radius: 50px; /* Овальная кнопка */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    white-space: nowrap; /* Чтобы текст в кнопке не переносился */
+}
+
+.promo-btn span {
+    font-size: 22px; /* Размер иконки плей */
+}
+
+.promo-btn:hover {
+    transform: scale(1.05); /* Кнопка чуть увеличивается при наведении */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 768px) {
+    .promo-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .promo-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
